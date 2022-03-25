@@ -1,25 +1,25 @@
-import NextLink from 'next/link';
-import { useContext, useState } from 'react';
-// import { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
+import NextLink from 'next/link';
 import {
   AppBar,
   Toolbar,
   Typography,
   Container,
   Link,
+  createMuiTheme,
+  ThemeProvider,
+  CssBaseline,
   Switch,
-} from '@mui/material';
-import { useRouter } from 'next/router';
-import { createTheme } from '@mui/material/styles';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+} from '@material-ui/core';
 import useStyles from '../utils/styles';
 import { Store } from '../utils/Store';
+import { dark } from '@material-ui/core/styles/createPalette';
 
 export default function Layout({ title, description, children }) {
   const { state, dispatch } = useContext(Store);
-  const { darkMode } = state;
-  const theme = createTheme({
+  const {darkMode} = state;
+  const theme = createMuiTheme({
     typography: {
       h1: {
         fontSize: '1.6rem',
@@ -31,12 +31,9 @@ export default function Layout({ title, description, children }) {
         fontWeight: 400,
         margin: '1rem 0',
       },
-      body1: {
-        fontWeight: 'normal',
-      },
     },
     palette: {
-      type: darkMode ? 'dark' : 'light',
+      type: darkMode? 'dark' : 'light',
       primary: {
         main: '#f0c000',
       },
@@ -45,11 +42,10 @@ export default function Layout({ title, description, children }) {
       },
     },
   });
-
   const classes = useStyles();
   const darkModeChangeHandler = () => {
-    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
-  };
+    dispatch({type: darkMode? 'DARK_MODE_OFF': 'DARK_MODE_ON'})
+  }
   return (
     <div>
       <Head>
@@ -65,11 +61,9 @@ export default function Layout({ title, description, children }) {
                 <Typography className={classes.brand}>amazona</Typography>
               </Link>
             </NextLink>
-            <Switch>
-              checked={lightMode} onChange={darkModeChangeHandler}
-            </Switch>
             <div className={classes.grow}></div>
             <div>
+            <Switch checked={darkMode} onChange={darkModeChangeHandler}></Switch>
               <NextLink href="/cart" passHref>
                 <Link>Cart</Link>
               </NextLink>

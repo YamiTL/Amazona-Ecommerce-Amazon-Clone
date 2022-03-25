@@ -1,7 +1,6 @@
-import { createContext, useReducer } from 'react';
-//export const MContext = React.createContext('');
+import { createContext, useReducer } from "react";
 
-export const Store = createContext();
+export const Store = createContext()
 const initialState = {
   darkMode: true,
 };
@@ -9,13 +8,13 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'DARK_MODE_ON':
-      return { ...state, darkMode: true };
+      return {...state, darkMode: true};
     case 'DARK_MODE_OFF':
-      return { ...state, darkMode: false };
+      return {...state, darkMode: false};
     default:
       return state;
   }
-}
+};
 
 export function StoreProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
