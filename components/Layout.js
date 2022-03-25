@@ -14,11 +14,10 @@ import { useRouter } from 'next/router';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import useStyles from '../utils/styles';
-import Store from '../utils/Store';
+import { Store } from '../utils/Store';
 
 export default function Layout({ title, description, children }) {
-  const router = useRouter;
-  const [state, dispatch] = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const { darkMode } = state;
   const theme = createTheme({
     typography: {
