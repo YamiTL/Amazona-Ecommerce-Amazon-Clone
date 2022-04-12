@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import useStyles from '../utils/styles';
-import { Store } from '../utils/Store';
+import Store from '../utils/Store';
 
 export default function Layout({ title, description, children }) {
   const router = useRouter;
@@ -44,8 +44,8 @@ export default function Layout({ title, description, children }) {
   });
   const classes = useStyles();
   const darkModeChangeHandler = () => {
-    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON'});
-  }
+    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
+  };
   return (
     <div>
       <Head>
