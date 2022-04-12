@@ -1,25 +1,25 @@
-import React, { useContext } from 'react';
-import Head from 'next/head';
 import NextLink from 'next/link';
+import { useContext, useState } from 'react';
+import Head from 'next/head';
 import {
   AppBar,
   Toolbar,
   Typography,
   Container,
   Link,
-  createMuiTheme,
-  ThemeProvider,
-  CssBaseline,
   Switch,
-} from '@material-ui/core';
+} from '@mui/material';
+import { useRouter } from 'next/router';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import useStyles from '../utils/styles';
 import { Store } from '../utils/Store';
-import { dark } from '@material-ui/core/styles/createPalette';
 
 export default function Layout({ title, description, children }) {
+  const router = useRouter;
   const { state, dispatch } = useContext(Store);
   const {darkMode} = state;
-  const theme = createMuiTheme({
+  const theme = createTheme({
     typography: {
       h1: {
         fontSize: '1.6rem',
@@ -33,7 +33,7 @@ export default function Layout({ title, description, children }) {
       },
     },
     palette: {
-      type: darkMode? 'dark' : 'light',
+      type: darkMode ? 'dark' : 'light',
       primary: {
         main: '#f0c000',
       },
@@ -44,7 +44,7 @@ export default function Layout({ title, description, children }) {
   });
   const classes = useStyles();
   const darkModeChangeHandler = () => {
-    dispatch({type: darkMode? 'DARK_MODE_OFF': 'DARK_MODE_ON'})
+    dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON'});
   }
   return (
     <div>

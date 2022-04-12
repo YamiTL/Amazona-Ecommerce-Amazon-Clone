@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 
-export const Store = createContext()
+export const Store = createContext();
 const initialState = {
   darkMode: true,
 };
@@ -21,3 +21,5 @@ export function StoreProvider(props) {
   const value = { state, dispatch };
   return <Store.Provider value={value}>{props.children}</Store.Provider>;
 }
+
+export default Store;
