@@ -1,5 +1,4 @@
-import { createContext, useReducer } from 'react';
-//export const MContext = React.createContext('');
+import { createContext, useReducer } from "react";
 
 export const Store = createContext();
 const initialState = {
@@ -15,7 +14,7 @@ function reducer(state, action) {
     default:
       return state;
   }
-}
+};
 
 export function StoreProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);

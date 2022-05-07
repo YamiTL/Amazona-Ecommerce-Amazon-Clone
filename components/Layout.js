@@ -1,6 +1,5 @@
 import NextLink from 'next/link';
 import { useContext, useState } from 'react';
-// import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import {
   AppBar,
@@ -18,8 +17,8 @@ import Store from '../utils/Store';
 
 export default function Layout({ title, description, children }) {
   const router = useRouter;
-  const [state, dispatch] = useContext(Store);
-  const { darkMode } = state;
+  const { state, dispatch } = useContext(Store);
+  const {darkMode} = state;
   const theme = createTheme({
     typography: {
       h1: {
@@ -32,9 +31,6 @@ export default function Layout({ title, description, children }) {
         fontWeight: 400,
         margin: '1rem 0',
       },
-      body1: {
-        fontWeight: 'normal',
-      },
     },
     palette: {
       type: darkMode ? 'dark' : 'light',
@@ -46,7 +42,6 @@ export default function Layout({ title, description, children }) {
       },
     },
   });
-
   const classes = useStyles();
   const darkModeChangeHandler = () => {
     dispatch({ type: darkMode ? 'DARK_MODE_OFF' : 'DARK_MODE_ON' });
@@ -66,11 +61,9 @@ export default function Layout({ title, description, children }) {
                 <Typography className={classes.brand}>amazona</Typography>
               </Link>
             </NextLink>
-            <Switch>
-              checked={lightMode} onChange={darkModeChangeHandler}
-            </Switch>
             <div className={classes.grow}></div>
             <div>
+            <Switch checked={darkMode} onChange={darkModeChangeHandler}></Switch>
               <NextLink href="/cart" passHref>
                 <Link>Cart</Link>
               </NextLink>

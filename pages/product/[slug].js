@@ -48,7 +48,28 @@ export default function ProductScreen() {
               <Typography component="h1" variant="h1">
                 {product.name}
               </Typography>
-              <Grid container>
+              </ListItem>
+            <ListItem>
+              <Typography>Category: {product.category}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>Brand: {product.brand}</Typography>
+            </ListItem>
+            <ListItem>
+              <Typography>
+                Rating: {product.rating} stars ({product.numReviews} reviews)
+              </Typography>
+            </ListItem>
+            <ListItem>
+              <Typography> Description: {product.description}</Typography>
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item md={3} xs={12}>
+          <Card>
+            <List>
+              <ListItem>
+                <Grid container>
                 <Grid item xs={6}>
                   <Typography>Price</Typography>
                 </Grid>
@@ -75,23 +96,7 @@ export default function ProductScreen() {
               </Button>
             </ListItem>
           </List>
-          <List>
-            <ListItem>
-              <Typography>Category: {product.category}</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography>Brand: {product.brand}</Typography>
-            </ListItem>
-            <ListItem>
-              <Typography>
-                Rating: {product.rating} stars ({product.numReviews} reviews)
-              </Typography>
-            </ListItem>
-            <ListItem>
-              <Typography>Description:</Typography>
-              <Typography>{product.description}</Typography>
-            </ListItem>
-          </List>
+          </Card>
         </Grid>
       </Grid>
     </Layout>
